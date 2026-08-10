@@ -27,7 +27,7 @@
     --sun-deep:#e2632c;
     --ink:#14171a;
     --charcoal:#505050;
-    --paper:#ffffff;
+    --paper:#f5f5f5;
     --paper-2:#f5f5f5;
     --line:rgba(20,23,26,.1);
     --maxw:1180px;
@@ -103,7 +103,7 @@
   .phase{
     position:absolute; inset:0; display:flex; flex-direction:column;
     align-items:center; justify-content:center; gap:clamp(10px,2vw,22px);
-    padding:0 6% 12vh; will-change:opacity;
+    padding:0 6% 30vh; will-change:opacity;
   }
   .phase-cool{opacity:0;}
   .hero-art{width:min(78vw,620px);height:auto;color:#fff;opacity:.95;}
@@ -118,9 +118,9 @@
   @keyframes bounce{0%,100%{transform:translateY(0);opacity:.4;}50%{transform:translateY(10px);opacity:1;}}
 
   .caption-track{
-    position:absolute; z-index:3; inset:0; padding:26vh 8% 12vh;
-    display:grid; place-items:center;
-    text-align:center; width:100%; pointer-events:none;
+    position:absolute; z-index:3; left:0; right:0; bottom:9vh; height:30vh;
+    padding:0 8%; display:grid; place-items:center;
+    text-align:center; pointer-events:none;
   }
   .caption-track p{
     grid-area:1/1; max-width:16ch; margin:0 auto;
@@ -214,6 +214,28 @@
   }
   p.lead{
     font-size:17px; color:var(--charcoal); max-width:620px; margin-top:16px; line-height:1.9;
+  }
+
+  /* ---------- LAYERS SCROLLYTELLING ---------- */
+  #layers{position:relative;height:300vh;background:var(--paper);}
+  .layers-sticky{
+    position:sticky;top:0;height:100vh;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;background:var(--paper);
+  }
+  .layers-stage{position:relative;width:min(92vw,1180px);aspect-ratio:16/9;}
+  .layer-shot{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:contain;
+    opacity:0;transition:opacity .35s ease;will-change:opacity;
+  }
+  #shot1{opacity:1;}
+  .layers-progress{
+    position:absolute;bottom:7vh;left:50%;transform:translateX(-50%);
+    width:min(46vw,300px);height:4px;border-radius:4px;background:rgba(15,26,26,.10);overflow:hidden;
+  }
+  .layers-progress i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--teal-deep));}
+  @media(max-width:600px){
+    #layers{height:260vh;}
+    .layers-stage{width:94vw;aspect-ratio:4/3;}
   }
 
   /* ---------- FEATURES ---------- */
@@ -324,6 +346,10 @@
   .roll-ti{background:linear-gradient(135deg,var(--sun-deep),var(--sun));}
   .roll-ce{background:linear-gradient(135deg,var(--teal-deep),var(--teal));}
   .roll-price .rp-name{display:block;font-size:13.5px;font-weight:700;opacity:.9;}
+  .roll-price .rp-was{
+    display:block;font-size:15px;font-weight:700;opacity:.72;margin-top:6px;
+    text-decoration:line-through;text-decoration-thickness:2px;font-variant-numeric:tabular-nums;
+  }
   .roll-price b{display:block;font-family:'Doran',sans-serif;font-size:30px;font-weight:800;margin:4px 0 2px;font-variant-numeric:tabular-nums;}
   .roll-price .rp-note{display:block;font-size:12px;opacity:.85;}
   @media(max-width:760px){
@@ -349,7 +375,7 @@
   .btn-ghost{border:1.5px solid rgba(255,255,255,.3); color:#fff;}
 
   footer{
-    background:#ffffff; color:var(--charcoal); text-align:center;
+    background:var(--paper); color:var(--charcoal); text-align:center;
     padding:36px 6%; font-size:13px; border-top:1px solid var(--line);
     display:flex; flex-direction:column; align-items:center; gap:14px;
   }
@@ -366,12 +392,11 @@
   @media(max-width:600px){
     nav{padding:10px 5%;}
     .brand-lockup .brand-full{height:42px;}
-    .hero-copy{padding-top:16vh;}
     .hero-copy h1.hero-h1{font-size:clamp(26px,8.5vw,38px);gap:10px 18px;}
     .hero-ico{width:clamp(32px,11vw,44px);}
     .hero-half{gap:10px;}
     .hero-sep{display:none;}
-    .caption-track{padding:44vh 8% 16vh;}
+    .caption-track{height:26vh;bottom:11vh;}
     .caption-track p{font-size:clamp(19px,5.6vw,26px);max-width:18ch;}
     .scroll-hint{bottom:4vh;}
     #madein .saudi-pre{width:min(70vw,240px);}
@@ -660,6 +685,18 @@
     <span>مصنّعة ومطوّرة محلياً في السعودية — <b>لمناخ السعودية تحديداً</b></span>
 </div>
 
+<!-- LAYERS SCROLLYTELLING -->
+<section id="layers">
+  <div class="layers-sticky">
+    <div class="layers-stage">
+      <img class="layer-shot" id="shot1" src="assets/img/layer-1.png" alt="فيلم 8K Ultra Cool — صفيحة واحدة">
+      <img class="layer-shot" id="shot2" src="assets/img/layer-2.png" alt="طبقات الفيلم متفرّقة">
+      <img class="layer-shot" id="shot3" src="assets/img/layer-3.png" alt="طبقات الفيلم مع مسمياتها">
+    </div>
+    <div class="layers-progress"><i id="layersBar"></i></div>
+  </div>
+</section>
+
 <!-- FEATURES -->
 <section class="block features" id="advantages">
   <div class="wrap">
@@ -796,8 +833,8 @@
         <div class="roll-fact"><b>‎~8</b><span>سيارات تقريباً للرولة</span></div>
       </div>
       <div class="roll-prices">
-        <div class="roll-price roll-ti"><span class="rp-name">نانو تيتانيوم</span><b>1,299 ريال</b><span class="rp-note">سعر الرولة</span></div>
-        <div class="roll-price roll-ce"><span class="rp-name">نانو سيراميك</span><b>999 ريال</b><span class="rp-note">سعر الرولة</span></div>
+        <div class="roll-price roll-ti"><span class="rp-name">نانو تيتانيوم</span><span class="rp-was">1,700 ريال</span><b>1,299 ريال</b><span class="rp-note">سعر الرولة</span></div>
+        <div class="roll-price roll-ce"><span class="rp-name">نانو سيراميك</span><span class="rp-was">1,400 ريال</span><b>999 ريال</b><span class="rp-note">سعر الرولة</span></div>
       </div>
     </div>
   </div>
@@ -920,6 +957,29 @@
     }
   });
   onScroll();
+
+  // ---------- LAYERS: swap the three shots across the scroll ----------
+  const layersSec = document.getElementById('layers');
+  if (layersSec) {
+    const shots = [1,2,3].map(n => document.getElementById('shot' + n));
+    const layersBar = document.getElementById('layersBar');
+    let layersTick = false;
+
+    function onLayersScroll(){
+      const total = layersSec.offsetHeight - window.innerHeight;
+      let p = (-layersSec.getBoundingClientRect().top) / total;
+      p = Math.max(0, Math.min(1, p));
+      const active = p < 0.34 ? 0 : p < 0.67 ? 1 : 2;
+      shots.forEach((el, i) => { el.style.opacity = i === active ? 1 : 0; });
+      layersBar.style.width = (p * 100) + '%';
+      layersTick = false;
+    }
+
+    window.addEventListener('scroll', () => {
+      if (!layersTick) { layersTick = true; requestAnimationFrame(onLayersScroll); }
+    });
+    onLayersScroll();
+  }
 
   // ---------- GENERIC SCROLL REVEAL ----------
   const revealEls = document.querySelectorAll('[data-reveal]');
