@@ -217,7 +217,16 @@
   /* ---------- FEATURES ---------- */
   .features{background:var(--paper-2);}
   .grid-features{
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:22px; margin-top:52px;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:52px;
+  }
+  @media(max-width:900px){ .grid-features{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:600px){ .grid-features{grid-template-columns:repeat(2,1fr);gap:14px;} }
+  @media(max-width:600px){
+    .feat-card{padding:20px 16px;}
+    .feat-card .ic{width:42px;height:42px;border-radius:12px;margin-bottom:14px;}
+    .feat-card .ic svg{width:21px;height:21px;}
+    .feat-card h3{font-size:15px;}
+    .feat-card p{font-size:12.5px;line-height:1.7;}
   }
   .feat-card{
     background:#fff; border:1px solid var(--line); border-radius:18px; padding:32px 26px;
