@@ -33,7 +33,8 @@
     --maxw:1180px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;overflow-x:hidden;}
+  html,body{max-width:100%;}
   body{
     font-family:'Doran',sans-serif;
     background:var(--paper);
@@ -185,6 +186,10 @@
   [data-reveal="up"]{transform:translateY(50px);}
   [data-reveal="scale"]{transform:scale(.88);}
   [data-reveal].in-view{opacity:1; transform:none;}
+  section.block, .made-strip, footer{overflow-x:clip;}
+  @media(max-width:700px){
+    [data-reveal="left"],[data-reveal="right"]{transform:translateY(36px);}
+  }
 
   /* ---------- SAUDI MADE STRIP ---------- */
   .made-strip{
@@ -272,8 +277,8 @@
   .series-card .sc-note{display:block;font-size:12.5px;opacity:.9;font-variant-numeric:tabular-nums;}
   @media(max-width:640px){ .series-cards{grid-template-columns:1fr;} }
 
-  .table-wrap{overflow-x:auto;border-radius:18px;border:1px solid var(--line);}
-  table{width:100%;border-collapse:collapse;min-width:860px;background:#fff;}
+  .table-wrap{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:18px;border:1px solid var(--line);}
+  table{width:100%;border-collapse:collapse;min-width:820px;background:#fff;}
   thead tr.group-row th{padding:10px 14px;font-size:11.5px;letter-spacing:.12em;}
   thead th.spec-col{background:var(--ink);}
   th.grp{color:#fff;text-align:center;}
@@ -359,6 +364,28 @@
   @media(max-width:640px){
     section.block{padding:70px 6%;}
     .hero-copy{padding-top:10vh;}
+  }
+  /* ---------- MOBILE TUNING ---------- */
+  @media(max-width:600px){
+    nav{padding:10px 5%;}
+    .brand-lockup .brand-full{height:42px;}
+    .hero-copy{padding-top:16vh;}
+    .hero-copy h1.hero-h1{font-size:clamp(26px,8.5vw,38px);gap:10px 18px;}
+    .hero-ico{width:clamp(32px,11vw,44px);}
+    .hero-half{gap:10px;}
+    .hero-sep{display:none;}
+    .caption-track{padding:44vh 8% 16vh;}
+    .caption-track p{font-size:clamp(19px,5.6vw,26px);max-width:18ch;}
+    .scroll-hint{bottom:4vh;}
+    #madein .saudi-pre{width:min(70vw,240px);}
+    .finale-inner .brand-mark{width:min(82vw,340px);}
+    section.block{padding:60px 5%;}
+    .series-cards{gap:12px;margin-top:28px;}
+    .series-card{padding:20px 16px;border-radius:16px;}
+    .series-card b{font-size:19px;}
+    .roll{padding:24px 18px;}
+    .table-wrap{border-radius:14px;}
+    footer .brand-lockup .brand-full{height:56px;}
   }
 </style>
 </head>
