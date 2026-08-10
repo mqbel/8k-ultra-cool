@@ -33,13 +33,12 @@
     --maxw:1180px;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;overflow-x:hidden;}
-  html,body{max-width:100%;}
+  html{scroll-behavior:smooth;}
   body{
     font-family:'Doran',sans-serif;
     background:var(--paper);
     color:var(--ink);
-    overflow-x:hidden;
+    overflow-x:clip;
   }
   .en{font-family:'Fraunces',serif;}
   ::selection{background:var(--teal);color:#fff;}
@@ -81,11 +80,18 @@
   .sticky{
     position:sticky; top:0; height:100vh; overflow:hidden;
     display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(180deg, var(--bg-top,#f3a53a) 0%, var(--bg-bot,#0cbab5) 100%);
-    transition:background .05s linear;
+    background:#0cbab5;
+  }
+  .bg-layer{position:absolute;inset:0;z-index:0;pointer-events:none;}
+  .bg-sun{background:linear-gradient(180deg,#f3a53a 0%,#e2632c 100%);}
+  .bg-cool{
+    background:linear-gradient(180deg,#0cbab5 0%,#088986 100%);
+    clip-path:inset(100% 0 0 0);
+    -webkit-mask-image:linear-gradient(180deg,rgba(0,0,0,.85) 0,#000 90px);
+            mask-image:linear-gradient(180deg,rgba(0,0,0,.85) 0,#000 90px);
   }
   .sticky::before{
-    content:'';position:absolute;inset:0;
+    content:'';position:absolute;inset:0;z-index:1;
     background:radial-gradient(ellipse at 50% 30%, rgba(255,255,255,.18), transparent 60%);
     pointer-events:none;
   }
@@ -440,6 +446,8 @@
 <!-- HERO SCROLL REVEAL -->
 <section id="reveal">
   <div class="sticky" id="sticky">
+    <div class="bg-layer bg-sun"></div>
+    <div class="bg-layer bg-cool" id="bgCool"></div>
     <div class="hero-copy">
       <h1 class="hero-h1">
         <span class="hero-half"><svg class="hero-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="24" r="8.6"/><path d="M24 3.4v7.2M24 37.4v7.2M3.4 24h7.2M37.4 24h7.2M9.4 9.4l5.1 5.1M33.5 33.5l5.1 5.1M38.6 9.4l-5.1 5.1M14.5 33.5l-5.1 5.1"/></svg><i>هذي شمسنا</i></span>
@@ -884,6 +892,7 @@
   const revealSection = document.getElementById('reveal');
   const caps = document.querySelectorAll('.cap');
   const sticky = document.getElementById('sticky');
+  const bgCool = document.getElementById('bgCool');
 
   function onScroll(){
     const rect = revealSection.getBoundingClientRect();
@@ -891,9 +900,8 @@
     let progress = (-rect.top) / total;
     progress = Math.max(0, Math.min(1, progress));
 
-    // background gradient shift
-    sticky.style.setProperty('--bg-top', lerpColor(SUN, TEAL, progress));
-    sticky.style.setProperty('--bg-bot', lerpColor(SUN_DEEP, TEAL_DEEP, progress));
+    // background: crossfade the warm layer into the cool one (no muddy mid-tones)
+    bgCool.style.clipPath = `inset(${(1 - progress) * 100}% 0 0 0)`;
 
     // captions
     caps.forEach(p => {
