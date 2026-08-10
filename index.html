@@ -90,8 +90,7 @@
   }
   .hero-copy{
     position:absolute; z-index:3; inset:0;
-    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
-    text-align:center; padding-top:14vh; pointer-events:none;
+    text-align:center; pointer-events:none;
   }
   .hero-copy .eyebrow{
     font-size:13px; letter-spacing:.3em; font-weight:700; color:#fff; opacity:.9;
@@ -101,15 +100,14 @@
     font-size:clamp(32px,6vw,64px); color:#fff; font-weight:900; line-height:1.15;
     text-shadow:0 6px 30px rgba(0,0,0,.2);
   }
-  .hero-copy h1.hero-h1{
-    display:flex; align-items:flex-end; justify-content:center; gap:clamp(14px,3vw,38px);
-    flex-wrap:wrap;
+  .phase{
+    position:absolute; inset:0; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; gap:clamp(10px,2vw,22px);
+    padding:0 6% 12vh; will-change:opacity;
   }
-  .hero-half{display:flex; flex-direction:column; align-items:center; gap:16px;}
-  .hero-half i{font-style:normal;}
-  .hero-ico{width:clamp(46px,7vw,86px);height:auto;color:#fff;opacity:.95;}
-  .hero-sep{opacity:.6; letter-spacing:.1em; align-self:flex-end; padding-bottom:.1em;}
-  @media(max-width:520px){ .hero-copy h1.hero-h1{gap:18px;} }
+  .phase-cool{opacity:0;}
+  .hero-art{width:min(78vw,620px);height:auto;color:#fff;opacity:.95;}
+  .phase h1{font-size:clamp(30px,6vw,64px);color:#fff;text-shadow:0 6px 30px rgba(0,0,0,.18);}
 
   .scroll-hint{
     position:absolute; bottom:6vh; left:50%; transform:translateX(-50%); z-index:3;
@@ -440,11 +438,14 @@
 <section id="reveal">
   <div class="sticky" id="sticky">
     <div class="hero-copy">
-      <h1 class="hero-h1">
-        <span class="hero-half"><svg class="hero-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><circle cx="24" cy="24" r="8.6"/><path d="M24 3.4v7.2M24 37.4v7.2M3.4 24h7.2M37.4 24h7.2M9.4 9.4l5.1 5.1M33.5 33.5l5.1 5.1M38.6 9.4l-5.1 5.1M14.5 33.5l-5.1 5.1"/></svg><i>هذي شمسنا</i></span>
-        <span class="hero-sep">..</span>
-        <span class="hero-half"><svg class="hero-ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 24V4M24 13.2l-4.4-4.4M24 13.2l4.4-4.4M24 20.4l-3.6-3.6M24 20.4l3.6-3.6" transform="rotate(0 24 24)"/><path d="M24 24V4M24 13.2l-4.4-4.4M24 13.2l4.4-4.4M24 20.4l-3.6-3.6M24 20.4l3.6-3.6" transform="rotate(60 24 24)"/><path d="M24 24V4M24 13.2l-4.4-4.4M24 13.2l4.4-4.4M24 20.4l-3.6-3.6M24 20.4l3.6-3.6" transform="rotate(120 24 24)"/><path d="M24 24V4M24 13.2l-4.4-4.4M24 13.2l4.4-4.4M24 20.4l-3.6-3.6M24 20.4l3.6-3.6" transform="rotate(180 24 24)"/><path d="M24 24V4M24 13.2l-4.4-4.4M24 13.2l4.4-4.4M24 20.4l-3.6-3.6M24 20.4l3.6-3.6" transform="rotate(240 24 24)"/><path d="M24 24V4M24 13.2l-4.4-4.4M24 13.2l4.4-4.4M24 20.4l-3.6-3.6M24 20.4l3.6-3.6" transform="rotate(300 24 24)"/></svg><i>وهذا حلّنا</i></span>
-      </h1>
+      <div class="phase phase-sun" id="phaseSun">
+        <svg class="hero-art" viewBox="0 0 620 340" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 236 C60 214 92 250 128 250 C150 250 152 226 138 224 C126 222 122 240 140 250 C168 264 196 240 226 226"/><path d="M394 214 C428 200 452 176 486 172 C506 170 512 150 500 144 C488 138 478 156 492 166 C512 180 560 176 612 160"/><circle cx="300" cy="170" r="66"/><path d="M244 188 C270 152 330 208 356 164"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(0 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(30 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(60 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(90 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(120 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(150 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(180 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(210 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(240 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(270 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(300 300 170)"/><path d="M300 92 C316 66 316 34 300 8 C284 34 284 66 300 92 Z" transform="rotate(330 300 170)"/></svg>
+        <h1>هذي شمسنا</h1>
+      </div>
+      <div class="phase phase-cool" id="phaseCool">
+        <svg class="hero-art" viewBox="0 0 620 236" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 124 C96 108 168 132 212 124"/><path d="M388 124 C440 130 520 112 612 122"/><path d="M300 118 V26 M300 62 l-22-22 M300 62 l22-22 M300 92 l-17-17 M300 92 l17-17" transform="rotate(0 300 118)"/><path d="M300 118 V26 M300 62 l-22-22 M300 62 l22-22 M300 92 l-17-17 M300 92 l17-17" transform="rotate(60 300 118)"/><path d="M300 118 V26 M300 62 l-22-22 M300 62 l22-22 M300 92 l-17-17 M300 92 l17-17" transform="rotate(120 300 118)"/><path d="M300 118 V26 M300 62 l-22-22 M300 62 l22-22 M300 92 l-17-17 M300 92 l17-17" transform="rotate(180 300 118)"/><path d="M300 118 V26 M300 62 l-22-22 M300 62 l22-22 M300 92 l-17-17 M300 92 l17-17" transform="rotate(240 300 118)"/><path d="M300 118 V26 M300 62 l-22-22 M300 62 l22-22 M300 92 l-17-17 M300 92 l17-17" transform="rotate(300 300 118)"/></svg>
+        <h1>وهذا حلّنا</h1>
+      </div>
     </div>
     <div class="caption-track">
       <p data-range="0,0.28" class="cap">تقنية نانو متطورة، مصمّمة لتتحمل شمس السعودية القاسية</p>
@@ -883,6 +884,9 @@
   const revealSection = document.getElementById('reveal');
   const caps = document.querySelectorAll('.cap');
   const sticky = document.getElementById('sticky');
+  const phaseSun = document.getElementById('phaseSun');
+  const phaseCool = document.getElementById('phaseCool');
+  const smooth = (t) => t <= 0 ? 0 : t >= 1 ? 1 : t * t * (3 - 2 * t);
 
   function onScroll(){
     const rect = revealSection.getBoundingClientRect();
@@ -891,6 +895,11 @@
     progress = Math.max(0, Math.min(1, progress));
 
     // background: crossfade the warm layer into the cool one (no muddy mid-tones)
+    // the copy swaps over the same stretch the colour turns cool
+    const swap = smooth((progress - 0.38) / 0.24);
+    phaseSun.style.opacity = 1 - swap;
+    phaseCool.style.opacity = swap;
+
     sticky.style.setProperty('--bg-top', lerpColor(SUN, TEAL, progress));
     sticky.style.setProperty('--bg-bot', lerpColor(SUN_DEEP, TEAL_DEEP, progress));
 
