@@ -80,12 +80,8 @@
   .sticky{
     position:sticky; top:0; height:100vh; overflow:hidden;
     display:flex; align-items:center; justify-content:center;
-    background:linear-gradient(180deg,
-      #f3a53a 0%, #ef8c34 12%, #e2632c 26%,
-      #a94a3f 40%, #4f4152 52%, #1d4a55 64%,
-      #0d6b6b 76%, #088986 88%, #0cbab5 100%);
-    background-size:100% 260%;
-    background-position:0% 0%;
+    background:linear-gradient(180deg, var(--bg-top,#e8a041) 0%, var(--bg-bot,#d9772f) 100%);
+    transition:background .05s linear;
   }
   .sticky::before{
     content:'';position:absolute;inset:0;z-index:1;
@@ -880,8 +876,8 @@
     const b = Math.round(c1[2] + (c2[2]-c1[2])*t);
     return `rgb(${r},${g},${b})`;
   }
-  const SUN = [243,165,58];
-  const SUN_DEEP = [226,99,44];
+  const SUN = [232,160,65];
+  const SUN_DEEP = [217,119,47];
   const TEAL = [12,186,181];
   const TEAL_DEEP = [8,137,134];
   const revealSection = document.getElementById('reveal');
@@ -895,7 +891,8 @@
     progress = Math.max(0, Math.min(1, progress));
 
     // background: crossfade the warm layer into the cool one (no muddy mid-tones)
-    sticky.style.backgroundPositionY = (progress * 100) + '%';
+    sticky.style.setProperty('--bg-top', lerpColor(SUN, TEAL, progress));
+    sticky.style.setProperty('--bg-bot', lerpColor(SUN_DEEP, TEAL_DEEP, progress));
 
     // captions
     caps.forEach(p => {
