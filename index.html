@@ -130,6 +130,44 @@
   }
   .caption-track p.show{opacity:1;}
 
+  /* warranty caption: big animated number instead of a sentence */
+  .caption-track p.cap-warranty{
+    max-width:none; display:flex; flex-direction:column; align-items:center;
+    gap:.15em; line-height:1.2;
+  }
+  .cap-warranty .w-pre{
+    font-size:clamp(15px,2.3vw,24px); font-weight:600; letter-spacing:.04em; opacity:.92;
+  }
+  .cap-warranty .w-row{display:flex; align-items:baseline; gap:.14em;}
+  .cap-warranty .w-num{
+    display:inline-block; transform-origin:50% 62%;
+    font-size:clamp(84px,16vw,208px); font-weight:900; line-height:.92;
+    font-variant-numeric:tabular-nums; letter-spacing:-.03em;
+    text-shadow:0 14px 46px rgba(0,0,0,.3);
+  }
+  .cap-warranty .w-unit{font-size:clamp(26px,5vw,58px); font-weight:800;}
+  .cap-warranty .w-sub{
+    font-size:clamp(14px,2vw,21px); font-weight:500; opacity:.88;
+    max-width:26ch; line-height:1.65; margin-top:.35em;
+  }
+  /* the big number needs the whole stage — retire the scroll cue while it shows */
+  #sticky:has(.cap-warranty.show) .scroll-hint{opacity:0;}
+  .scroll-hint{transition:opacity .4s ease;}
+  .cap-warranty > *{
+    opacity:0; transform:translateY(20px);
+    transition:opacity .55s ease, transform .55s cubic-bezier(.22,1,.36,1);
+  }
+  .cap-warranty.show > *{opacity:1; transform:none;}
+  .cap-warranty.show .w-pre{transition-delay:.06s;}
+  .cap-warranty.show .w-row{transition-delay:.2s;}
+  .cap-warranty.show .w-sub{transition-delay:.5s;}
+  .cap-warranty.show .w-num{animation:numPop .75s cubic-bezier(.2,1.25,.35,1) .2s both;}
+  @keyframes numPop{from{transform:scale(.5);filter:blur(8px);}to{transform:scale(1);filter:blur(0);}}
+  @media (prefers-reduced-motion:reduce){
+    .cap-warranty > *{transition:none; transform:none; opacity:1;}
+    .cap-warranty.show .w-num{animation:none;}
+  }
+
   /* ---------- SLIDE SNAP (after the hero) ---------- */
   html{scroll-snap-type:y proximity;}
   #madein, #finale{scroll-snap-align:center; scroll-snap-stop:always;}
@@ -475,7 +513,11 @@
     <div class="caption-track">
       <p data-range="0.48,0.66" class="cap">عازل حراري بتقنية النانو المتطورة .. مصمّمة لتتحمل شمس السعودية القاسية</p>
       <p data-range="0.66,0.83" class="cap">تسع طبقات دقيقة تعمل معاً: عزل حراري، حماية UV، ومنع وهج</p>
-      <p data-range="0.83,1" class="cap">مع ضمان للعيوب المصنعيّة لمدة 10 سنوات</p>
+      <p data-range="0.83,1" class="cap cap-warranty">
+        <span class="w-pre">ضمان حقيقي على</span>
+        <span class="w-row"><span class="w-num" id="warrantyNum">0</span><span class="w-unit">سنوات</span></span>
+        <span class="w-sub">عيوب التصنيع، اختلاف الجودة، التغيّر في اللون، والتقشّر أو التشقّق</span>
+      </p>
     </div>
     <div class="scroll-hint"><span>منتجاتنا؟</span><span class="dot"></span></div>
   </div>
@@ -947,6 +989,31 @@
     });
 
     requestTick = false;
+  }
+
+  // warranty number counts up every time its caption enters view
+  const wCap = document.querySelector('.cap-warranty');
+  const wNum = document.getElementById('warrantyNum');
+  if (wCap && wNum) {
+    const TARGET = 7, DUR = 1000;
+    let running = false, raf = 0;
+    new MutationObserver(() => {
+      if (wCap.classList.contains('show')) {
+        if (running) return;
+        running = true;
+        const t0 = performance.now();
+        const step = (t) => {
+          const k = Math.min(1, (t - t0) / DUR);
+          wNum.textContent = Math.round(TARGET * (1 - Math.pow(1 - k, 3)));
+          if (k < 1) raf = requestAnimationFrame(step);
+        };
+        raf = requestAnimationFrame(step);
+      } else {
+        running = false;
+        cancelAnimationFrame(raf);
+        wNum.textContent = '0';
+      }
+    }).observe(wCap, { attributes: true, attributeFilter: ['class'] });
   }
 
   let requestTick = false;
