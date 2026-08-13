@@ -9,6 +9,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap" rel="stylesheet">
 <style>
   @font-face{
+    font-family:'Cagile';
+    src:url('assets/fonts/Cagile-SemiBold.otf') format('opentype');
+    font-weight:100 900; font-style:normal; font-display:swap;
+    unicode-range:U+0030-0039, U+002E, U+002C, U+0025;
+  }
+  @font-face{
     font-family:'Doran';
     src:url('assets/fonts/Doran-Medium.ttf') format('truetype');
     font-weight:400 600;
@@ -35,12 +41,12 @@
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    font-family:'Doran',sans-serif;
+    font-family:'Cagile','Doran',sans-serif;
     background:var(--paper);
     color:var(--ink);
     overflow-x:clip;
   }
-  .en{font-family:'Fraunces',serif;}
+  .en{font-family:'Cagile','Fraunces',serif;}
   ::selection{background:var(--teal);color:#fff;}
 
   /* ---------- NAV ---------- */
@@ -208,7 +214,7 @@
   .finale-inner p.tag{
     color:#fff; font-size:clamp(18px,3vw,28px); font-weight:700; opacity:.95;
   }
-  .finale-inner p.tag small{display:block;font-family:'Fraunces',serif;font-weight:600;font-size:.65em;opacity:.75;letter-spacing:.05em;margin-top:6px;}
+  .finale-inner p.tag small{display:block;font-family:'Cagile','Fraunces',serif;font-weight:600;font-size:.65em;opacity:.75;letter-spacing:.05em;margin-top:6px;}
 
   /* ---------- SCROLL REVEAL (generic, used across sections) ---------- */
   [data-reveal]{
@@ -307,7 +313,7 @@
   /* ---------- SPEC TABLE ---------- */
   .specs .tabs{display:flex;gap:10px;margin-top:44px;margin-bottom:26px;}
   .tab-btn{
-    font-family:'Doran';font-weight:700;font-size:14.5px;
+    font-family:'Cagile','Doran';font-weight:700;font-size:14.5px;
     padding:11px 26px;border-radius:100px;border:1.5px solid var(--line);
     background:#fff;cursor:pointer;transition:all .2s ease;color:var(--ink);
   }
@@ -328,7 +334,7 @@
   .series-ce{background:linear-gradient(135deg,var(--teal-deep),var(--teal));}
   .series-card .sc-en{display:block;font-size:11px;letter-spacing:.22em;font-weight:700;opacity:.85;}
   .series-card b{
-    display:block;font-family:'Doran',sans-serif;font-weight:800;
+    display:block;font-family:'Cagile','Doran',sans-serif;font-weight:800;
     font-size:clamp(20px,2.6vw,28px);margin:8px 0 6px;
   }
   .series-card .sc-note{display:block;font-size:12.5px;opacity:.9;font-variant-numeric:tabular-nums;}
@@ -361,7 +367,7 @@
 
   table caption{
     caption-side:top; text-align:center; background:var(--ink); color:#fff;
-    font-family:'Doran',sans-serif; font-weight:800; font-size:16px; letter-spacing:.02em;
+    font-family:'Cagile','Doran',sans-serif; font-weight:800; font-size:16px; letter-spacing:.02em;
     padding:16px 14px;
   }
   .grp-en{display:block;font-size:10.5px;letter-spacing:.14em;opacity:.85;font-weight:700;margin-top:3px;}
@@ -374,10 +380,10 @@
     margin-top:46px;padding:34px 30px;border:1px solid var(--line);border-radius:22px;
     background:linear-gradient(135deg,rgba(243,165,58,.06),rgba(12,186,181,.06));
   }
-  .roll-head h3{font-family:'Doran',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,28px);margin:6px 0 0;color:var(--ink);}
+  .roll-head h3{font-family:'Cagile','Doran',sans-serif;font-weight:800;font-size:clamp(20px,2.4vw,28px);margin:6px 0 0;color:var(--ink);}
   .roll-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px;}
   .roll-fact{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;}
-  .roll-fact b{display:block;font-family:'Doran',sans-serif;font-size:26px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;}
+  .roll-fact b{display:block;font-family:'Cagile','Doran',sans-serif;font-size:26px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;}
   .roll-fact span{display:block;font-size:12.5px;color:#8a8a8a;margin-top:6px;}
   .roll-prices{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:16px;}
   .roll-price{border-radius:16px;padding:22px;text-align:center;color:#fff;}
@@ -388,7 +394,7 @@
     display:block;font-size:15px;font-weight:700;opacity:.72;margin-top:6px;
     text-decoration:line-through;text-decoration-thickness:2px;font-variant-numeric:tabular-nums;
   }
-  .roll-price b{display:block;font-family:'Doran',sans-serif;font-size:30px;font-weight:800;margin:4px 0 2px;font-variant-numeric:tabular-nums;}
+  .roll-price b{display:block;font-family:'Cagile','Doran',sans-serif;font-size:30px;font-weight:800;margin:4px 0 2px;font-variant-numeric:tabular-nums;}
   .roll-price .rp-note{display:block;font-size:12px;opacity:.85;}
   @media(max-width:760px){
     .roll-grid{grid-template-columns:1fr;}
@@ -513,7 +519,7 @@
     <div class="caption-track">
       <p data-range="0.48,0.66" class="cap">عازل حراري بتقنية النانو المتطورة .. مصمّمة لتتحمل شمس السعودية القاسية</p>
       <p data-range="0.66,0.83" class="cap">تسع طبقات دقيقة تعمل معاً: عزل حراري، حماية UV، ومنع وهج</p>
-      <p data-range="0.83,1" class="cap cap-warranty">
+      <p data-range="0.80,1.01" class="cap cap-warranty">
         <span class="w-pre">ضمان حقيقي على</span>
         <span class="w-row"><span class="w-num" id="warrantyNum">0</span><span class="w-unit">سنوات</span></span>
         <span class="w-sub">عيوب التصنيع، اختلاف الجودة، التغيّر في اللون، والتقشّر أو التشقّق</span>
@@ -808,14 +814,14 @@
           <tr class="group-row">
             <th class="spec-col"></th>
             <th colspan="4" class="grp grp-ti">نانو تيتانيوم<span class="grp-en">NANO TITANIUM</span></th>
-            <th colspan="4" class="grp grp-ce">نانو سيراميك<span class="grp-en">NANO CERAMIC</span></th>
+            <th colspan="4" class="grp grp-ce">نانو سيراميك 99<span class="grp-en">NANO CERAMIC 99</span></th>
           </tr>
           <tr>
             <th class="spec-col">المواصفة</th>
-            <th class="col-ti"><span class="grade">شفاف</span><span class="metric-hint">60%</span></th>
+            <th class="col-ti"><span class="grade">شفاف</span><span class="metric-hint">63%</span></th>
             <th class="col-ti"><span class="grade">00</span><span class="metric-hint">45%</span></th>
-            <th class="col-ti"><span class="grade">01</span><span class="metric-hint">35%</span></th>
-            <th class="col-ti"><span class="grade">02</span><span class="metric-hint">18%</span></th>
+            <th class="col-ti"><span class="grade">01</span><span class="metric-hint">31%</span></th>
+            <th class="col-ti"><span class="grade">02</span><span class="metric-hint">15%</span></th>
             <th class="col-ce"><span class="grade">شفاف</span><span class="metric-hint">7095</span></th>
             <th class="col-ce"><span class="grade">00</span><span class="metric-hint">5099</span></th>
             <th class="col-ce"><span class="grade">01</span><span class="metric-hint">3599</span></th>
@@ -824,39 +830,44 @@
         </thead>
         <tbody>
           <tr>
-            <td>منع الأشعة تحت الحمراء 950 نانومتر<span class="spec-en">Infrared Rejection (IR) 950nm</span></td>
-            <td class="col-ti">99%</td><td class="col-ti">99%</td><td class="col-ti">99%</td><td class="col-ti">99%</td>
+            <td>منع الأشعة فوق البنفسجية<span class="spec-en">Ultraviolet Rejection (UV) %</span></td>
+            <td class="col-ti">95%</td><td class="col-ti">95%</td><td class="col-ti">95%</td><td class="col-ti">95%</td>
             <td class="col-ce">95%</td><td class="col-ce">99%</td><td class="col-ce">99%</td><td class="col-ce">99%</td>
           </tr>
           <tr>
             <td>نفاذية الضوء المرئي<span class="spec-en">Visible Light Transmittance (VLT)</span></td>
-            <td class="col-ti">60%</td><td class="col-ti">45%</td><td class="col-ti">35%</td><td class="col-ti">18%</td>
-            <td class="col-ce">70%</td><td class="col-ce">50%</td><td class="col-ce">35%</td><td class="col-ce">20%</td>
+            <td class="col-ti">63%</td><td class="col-ti">45%</td><td class="col-ti">31%</td><td class="col-ti">15%</td>
+            <td class="col-ce">71%</td><td class="col-ce">50%</td><td class="col-ce">35%</td><td class="col-ce">20%</td>
           </tr>
           <tr>
-            <td>منع الأشعة فوق البنفسجية<span class="spec-en">Ultraviolet Rejection (UV)</span></td>
-            <td class="col-ti">99%</td><td class="col-ti">99%</td><td class="col-ti">99%</td><td class="col-ti">99%</td>
-            <td class="col-ce">99%</td><td class="col-ce">99%</td><td class="col-ce">99%</td><td class="col-ce">99%</td>
+            <td>منع الأشعة تحت الحمراء 940 نانومتر<span class="spec-en">IR Rejection @940nm %</span></td>
+            <td class="col-ti">95.7%</td><td class="col-ti">91.3%</td><td class="col-ti">97.2%</td><td class="col-ti">97.3%</td>
+            <td class="col-ce">96.2%</td><td class="col-ce">99%</td><td class="col-ce">98.9%</td><td class="col-ce">98.9%</td>
           </tr>
           <tr>
-            <td>منع أشعة تحت الحمراء 2500 نانومتر<span class="spec-en">Full IR Rejection 2500nm</span></td>
-            <td class="col-ti">93%</td><td class="col-ti">94%</td><td class="col-ti">94%</td><td class="col-ti">95%</td>
-            <td class="col-ce">92%</td><td class="col-ce">95%</td><td class="col-ce">96%</td><td class="col-ce">97%</td>
+            <td>منع الأشعة تحت الحمراء 1400 نانومتر<span class="spec-en">IR Rejection @1400nm %</span></td>
+            <td class="col-ti">99%</td><td class="col-ti">94.7%</td><td class="col-ti">99.4%</td><td class="col-ti">99.6%</td>
+            <td class="col-ce">99%</td><td class="col-ce">99.9%</td><td class="col-ce">99.8%</td><td class="col-ce">99.8%</td>
+          </tr>
+          <tr>
+            <td>منع الأشعة الشمسية تحت الحمراء<span class="spec-en">Solar IR Rejection (SIRR) %</span></td>
+            <td class="col-ti">94.9%</td><td class="col-ti">89.8%</td><td class="col-ti">96.3%</td><td class="col-ti">97%</td>
+            <td class="col-ce">95.3%</td><td class="col-ce">98%</td><td class="col-ce">97.9%</td><td class="col-ce">97.8%</td>
           </tr>
           <tr class="row-hero">
-            <td>منع إجمالي الطاقة الشمسية<span class="spec-en">Total Solar Energy Rejection (TSER)</span></td>
-            <td class="col-ti">62%</td><td class="col-ti">69%</td><td class="col-ti">78%</td><td class="col-ti">90%</td>
-            <td class="col-ce">58%</td><td class="col-ce">67%</td><td class="col-ce">79%</td><td class="col-ce">87%</td>
+            <td>منع إجمالي الطاقة الشمسية<span class="spec-en">Total Solar Energy Rejection (TSER) %</span></td>
+            <td class="col-ti">64%</td><td class="col-ti">54%</td><td class="col-ti">66.2%</td><td class="col-ti">62.4%</td>
+            <td class="col-ce">47.5%</td><td class="col-ce">52.9%</td><td class="col-ce">58.7%</td><td class="col-ce">64%</td>
           </tr>
           <tr>
-            <td>معامل اكتساب الحرارة الشمسية<span class="spec-en">Solar Heat Gain Coefficient (SHGC)</span></td>
-            <td class="col-ti">0.38</td><td class="col-ti">0.31</td><td class="col-ti">0.22</td><td class="col-ti">0.10</td>
-            <td class="col-ce">0.42</td><td class="col-ce">0.22</td><td class="col-ce">0.21</td><td class="col-ce">0.13</td>
+            <td>معامل اكتساب الحرارة الشمسية<span class="spec-en">Solar Heat Gain Coefficient (SHGC) %</span></td>
+            <td class="col-ti">36%</td><td class="col-ti">46%</td><td class="col-ti">33.8%</td><td class="col-ti">37.6%</td>
+            <td class="col-ce">52.5%</td><td class="col-ce">47.1%</td><td class="col-ce">41.2%</td><td class="col-ce">36%</td>
           </tr>
           <tr>
-            <td>الضبابية<span class="spec-en">Haze</span></td>
-            <td class="col-ti">0.45</td><td class="col-ti">0.59</td><td class="col-ti">0.68</td><td class="col-ti">0.92</td>
-            <td class="col-ce">0.53</td><td class="col-ce">0.78</td><td class="col-ce">1.12</td><td class="col-ce">1.38</td>
+            <td>معامل التظليل<span class="spec-en">Shading Coefficient (SC)</span></td>
+            <td class="col-ti">0.41</td><td class="col-ti">0.52</td><td class="col-ti">0.38</td><td class="col-ti">0.43</td>
+            <td class="col-ce">0.6</td><td class="col-ce">0.54</td><td class="col-ce">0.47</td><td class="col-ce">0.41</td>
           </tr>
         </tbody>
       </table>
@@ -985,36 +996,39 @@
     // captions
     caps.forEach(p => {
       const [a,b] = p.dataset.range.split(',').map(Number);
-      p.classList.toggle('show', progress >= a && progress < b);
+      const on = progress >= a && progress < b;
+      if (p === wCap) {
+        if (on || progress >= 0.8) { runWarranty(); return; }
+        p.classList.remove('show');
+        return;
+      }
+      p.classList.toggle('show', on);
     });
 
     requestTick = false;
   }
 
-  // warranty number counts up every time its caption enters view
+  // warranty number counts up the first time its caption is reached, and stays put
   const wCap = document.querySelector('.cap-warranty');
   const wNum = document.getElementById('warrantyNum');
-  if (wCap && wNum) {
-    const TARGET = 7, DUR = 1000;
-    let running = false, raf = 0;
-    new MutationObserver(() => {
-      if (wCap.classList.contains('show')) {
-        if (running) return;
-        running = true;
-        const t0 = performance.now();
-        const step = (t) => {
-          const k = Math.min(1, (t - t0) / DUR);
-          wNum.textContent = Math.round(TARGET * (1 - Math.pow(1 - k, 3)));
-          if (k < 1) raf = requestAnimationFrame(step);
-        };
-        raf = requestAnimationFrame(step);
-      } else {
-        running = false;
-        cancelAnimationFrame(raf);
-        wNum.textContent = '0';
-      }
-    }).observe(wCap, { attributes: true, attributeFilter: ['class'] });
-  }
+  const runWarranty = (() => {
+    if (!wCap || !wNum) return () => {};
+    const TARGET = 7, DUR = 1100;
+    let done = false;
+    return () => {
+      if (done) return;
+      done = true;
+      wCap.classList.add('show');
+      const t0 = performance.now();
+      const step = (t) => {
+        const k = Math.min(1, (t - t0) / DUR);
+        wNum.textContent = Math.round(TARGET * (1 - Math.pow(1 - k, 3)));
+        if (k < 1) requestAnimationFrame(step);
+        else wNum.textContent = TARGET;
+      };
+      requestAnimationFrame(step);
+    };
+  })();
 
   let requestTick = false;
   window.addEventListener('scroll', () => {
