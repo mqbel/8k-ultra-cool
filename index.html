@@ -12,7 +12,7 @@
     font-family:'Cagile';
     src:url('assets/fonts/Cagile-SemiBold.otf') format('opentype');
     font-weight:100 900; font-style:normal; font-display:swap;
-    unicode-range:U+0030-0039, U+002E, U+002C, U+0025;
+    unicode-range:U+0030-0039, U+002E;
   }
   @font-face{
     font-family:'Doran';
@@ -367,8 +367,20 @@
 
   table caption{
     caption-side:top; text-align:center; background:var(--ink); color:#fff;
-    font-family:'Cagile','Doran',sans-serif; font-weight:800; font-size:16px; letter-spacing:.02em;
-    padding:16px 14px;
+    padding:30px 22px 24px;
+  }
+  .cap-kicker{
+    display:inline-block; font-size:11px; font-weight:800; letter-spacing:.22em;
+    color:var(--teal); border:1px solid rgba(12,186,181,.45);
+    border-radius:100px; padding:6px 14px; margin-bottom:14px;
+  }
+  .cap-title{
+    display:block; font-family:'Cagile','Doran',sans-serif; font-weight:800;
+    font-size:clamp(20px,2.6vw,30px); line-height:1.35;
+  }
+  .cap-sub{
+    display:block; margin-top:8px; font-size:13.5px; line-height:1.8;
+    color:rgba(255,255,255,.62);
   }
   .grp-en{display:block;font-size:10.5px;letter-spacing:.14em;opacity:.85;font-weight:700;margin-top:3px;}
   th .grade{display:block;font-size:15px;font-weight:800;letter-spacing:.04em;}
@@ -809,7 +821,11 @@
 
     <div class="table-wrap" data-reveal="scale">
       <table>
-        <caption>مواصفات أفلام <bdi>8K Ultra Cool</bdi></caption>
+        <caption>
+          <span class="cap-kicker">نتائج مختبر · لا مبالغات</span>
+          <span class="cap-title">أرقام مقيسة، مو كلام تسويقي</span>
+          <span class="cap-sub">قِسها بأي علامة عالمية — نفس المقاييس، ونفس شروط الاختبار.</span>
+        </caption>
         <thead>
           <tr class="group-row">
             <th class="spec-col"></th>
