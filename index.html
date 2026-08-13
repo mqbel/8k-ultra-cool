@@ -1031,12 +1031,19 @@
   const setWarranty = (() => {
     if (!wCap || !wNum) return () => {};
     const TARGET = 7, DUR = 1100;
-    let visible = false, raf = 0;
+    let visible = false, raf = 0, resetT = 0;
     return (on) => {
       if (on === visible) return;
       visible = on;
       cancelAnimationFrame(raf);
-      if (!on) { wCap.classList.remove('show'); wNum.textContent = '0'; return; }
+      clearTimeout(resetT);
+      if (!on) {
+        // rewind only after it has faded out, so the zero is never on screen
+        wCap.classList.remove('show');
+        resetT = setTimeout(() => { wNum.textContent = '0'; }, 700);
+        return;
+      }
+      wNum.textContent = '0';
       wCap.classList.add('show');
       const t0 = performance.now();
       const step = (t) => {
