@@ -998,8 +998,9 @@
       const [a,b] = p.dataset.range.split(',').map(Number);
       const on = progress >= a && progress < b;
       if (p === wCap) {
-        if (on || progress >= 0.8) { runWarranty(); return; }
-        p.classList.remove('show');
+        // stays up for the whole tail of the hero, and replays on every pass
+        const pinned = rect.bottom > window.innerHeight * 0.5;
+        setWarranty(pinned && progress >= a);
         return;
       }
       p.classList.toggle('show', on);
@@ -1011,22 +1012,24 @@
   // warranty number counts up the first time its caption is reached, and stays put
   const wCap = document.querySelector('.cap-warranty');
   const wNum = document.getElementById('warrantyNum');
-  const runWarranty = (() => {
+  const setWarranty = (() => {
     if (!wCap || !wNum) return () => {};
     const TARGET = 7, DUR = 1100;
-    let done = false;
-    return () => {
-      if (done) return;
-      done = true;
+    let visible = false, raf = 0;
+    return (on) => {
+      if (on === visible) return;
+      visible = on;
+      cancelAnimationFrame(raf);
+      if (!on) { wCap.classList.remove('show'); wNum.textContent = '0'; return; }
       wCap.classList.add('show');
       const t0 = performance.now();
       const step = (t) => {
         const k = Math.min(1, (t - t0) / DUR);
         wNum.textContent = Math.round(TARGET * (1 - Math.pow(1 - k, 3)));
-        if (k < 1) requestAnimationFrame(step);
+        if (k < 1) raf = requestAnimationFrame(step);
         else wNum.textContent = TARGET;
       };
-      requestAnimationFrame(step);
+      raf = requestAnimationFrame(step);
     };
   })();
 
